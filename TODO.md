@@ -33,3 +33,6 @@ Player usually should be able to rearrange the order of their cards through drag
 ### Hint / Burn zone
 
 Stores the number of hints and burns there are. Most games start with 8 hints and 3 burns. If you burn out you lose the game with 0 points.
+
+
+### Pass and Play? 

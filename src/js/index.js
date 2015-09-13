@@ -1,5 +1,19 @@
 const React = require('react/addons');
 const App = require('./screens/Fanabi');
-const mountNode = document.querySelector('#mountNode');
+const Lobby = require('./screens/Fanabi/screens/Lobby');
+const Board = require('./screens/Fanabi/screens/Board');
 
-React.render(<App />, mountNode);
+const mountNode = document.querySelector('#mountNode');
+const ReactRouter = require('react-router')
+const Router = ReactRouter.Router
+const Route = ReactRouter.Route
+const Link = ReactRouter.Link
+
+React.render((
+  <Router>
+    <Route path="/" component={App}>
+      <Route path="board" component={Board}/>
+      <Route path="lobby" component={Lobby}/>
+    </Route>
+  </Router>
+), mountNode);
