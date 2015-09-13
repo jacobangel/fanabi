@@ -35,7 +35,7 @@ module.exports = {
   module: {
     loaders: [
      { test: /\.jsx?$/, loaders: ['babel-loader'], exclude: /node_modules/ },
-     { test: /\.less?$/, loaders: ['style-loader', 'css-loader!autoprefixer-loader?browsers=last 2 versions', 'less-loader'], exclude: /node_modules/ },
+     { test: /\.less?$/, loaders: ['style-loader', 'css-loader', 'autoprefixer-loader?browsers=last 2 versions', 'less-loader'], exclude: /node_modules/ },
     ],
   },
   output: {

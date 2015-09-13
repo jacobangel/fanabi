@@ -30,6 +30,7 @@ const PlayMenu = React.createClass({
 
   linkHandler(action) {
     return {
+      key: action,
       onClick: (e) => {this.handleAction(action)}
     }
   },

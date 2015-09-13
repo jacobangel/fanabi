@@ -1,41 +1,54 @@
+@bwidth: 3px;
 :local {
     .container {
       width: 80px;
       height: 120px;
+      margin: 5px;
       overflow: hidden;
     }
+}
+.isFaceDown {
+  background: brown;
 }
 
 .red {
   color: red;
-  border: 1px solid red;
+  border: @bwidth solid red;
 }
 
 .blue {
   color: blue;
-  border: 1px solid blue;
+  border: @bwidth solid blue;
 }
 
 .white {
-  border: 1px solid black;
+  border: @bwidth solid black;
 }
 
 .green {
-  border: 1px solid green;
+  border: @bwidth solid green;
   color: green;
 }
 
-@keyframes rainbow {
-  0% {border-color: hsl(0, 100%, 50%);}
-  100% {border-color: hsl(255, 100%, 50%);}
+@keyframes charlieeee {
+    from { background-position: top left; }
+    to   { background-position: top right; }
 }
 
 .rainbow {
-  border: 4px solid hsl(0, 100%, 50%);
-  animation: rainbow 5s infinite alternate;
+    @gradient: left, red, orange, yellow, green, blue, indigo, violet, indigo, blue, green, yellow, orange, red;
+    border-width: @bwidth;
+    border-style: solid;
+    border-image: linear-gradient(135deg, #ff3232 0%,#fffb89 17%,#9eff30 32%,#89ffdf 47%,#2837ff 65%,#fb89ff 84%,#ff2828 98%);
+    border-image-repeat: stretch;
+    border-image-slice: 1;
+    animation: charlieeee 2.5s forwards linear infinite;
+}
+
+.rainbow {
 }
 
 .yellow {
   color: yellow;
-  border: 1px solid yellow;
+  border: @bwidth solid yellow;
 }
