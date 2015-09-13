@@ -30,6 +30,8 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "autoprefixer": "^6.0.2",
+    "autoprefixer-loader": "^3.1.0",
     "axios": "^0.5.4",
     "body-parser": "^1.13.3",
     "classnames": "^2.1.3",
