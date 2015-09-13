@@ -4,9 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var routes = require('./src/routes/index');
-var users = require('./src/routes/users');
+var games = require('./src/routes/games');
 var expressLayouts = require('express-ejs-layouts')
 
 var app = express();
@@ -24,8 +25,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// database connection
+mongoose.connect('mongodb://localhost/fanabi');
+var db = mongoose.connection;
+
+db.on('error', function (err) {
+    console.error('connection error:', err.message);
+});
+db.once('open', function callback () {
+    console.log("Connected to DB!");
+});
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
 app.use('/', routes);
-app.use('/users', users);
+app.use('/games', games);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
