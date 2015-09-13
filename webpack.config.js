@@ -30,7 +30,7 @@ var reactExternal = {
 
 module.exports = {
   entry: {
-      app: './index.js',
+      app: './src/js/index.js',
   },
   module: {
     loaders: [
@@ -39,7 +39,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "dist"),
-    publicPath: '/dist/',
+    publicPath: '/dist/javascripts',
     filename: '[name].js'
   },
   devServer: {
