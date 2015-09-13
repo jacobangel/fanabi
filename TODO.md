@@ -1,4 +1,4 @@
-## "spaces"
+## Notes
 
 ### Start game / Lobby
 ### In game
@@ -35,4 +35,11 @@ Player usually should be able to rearrange the order of their cards through drag
 Stores the number of hints and burns there are. Most games start with 8 hints and 3 burns. If you burn out you lose the game with 0 points.
 
 
-### Pass and Play? 
+### Pass and Play?
+
+## Tasks
+
+- Incorporate Redux for data flow in client.
+- Setup Resty end points to pass data between various clients, so we can start games.
+- Use React-DND to allow reorganization of the cards
+- Style up
