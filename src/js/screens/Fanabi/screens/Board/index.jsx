@@ -1,15 +1,15 @@
 const React = require('react/addons');
-
 const Hand = require('./components/Hand');
-
+const DummyData = require('utils/DummyData');
 const Board = React.createClass({
   getDefaultProps() {
     return {
-      handList: [[
-          { suit: 'RED', value: 1 },
-          { suit: 'BLUE', value: 3 },
-          { suit: 'WHITE', value: 1 },
-      ]],
+      handList: [
+        DummyData.getRandomHand(5),
+        DummyData.getRandomHand(5),
+        DummyData.getRandomHand(5),
+        DummyData.getRandomHand(5),
+      ]
     };
   },
   render() {

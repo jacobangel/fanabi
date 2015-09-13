@@ -26,6 +26,25 @@ const Card = React.createClass({
     };
   },
 
+  handleFlipLeft() {
+    console.log('flip left');
+  },
+
+  handleFlipRight() {
+    console.log('flip right');
+  },
+
+  renderFlipMode() {
+    return (
+      <div className={cn(ss.flipMode)}>
+        <ul>
+          <li className={ss.flipLeft}><button onClick={this.handleFlipLeft}>left</button></li>
+          <li className={ss.flipRight}><button onClick={this.handleFlipRight}>right</button></li>
+        </ul>
+      </div>
+    );
+  },
+
   render() {
     const { orientation, suit, value, isFaceDown } = this.props;
     let classList = isFaceDown? 'isFaceDown' : [orientation.toLowerCase(), value, suit.toLowerCase()];
@@ -33,7 +52,10 @@ const Card = React.createClass({
       <div className={cn('card', ss.container, classList)}
         onClick={this.props.handleClick}
         >
-        {value}
+        {this.renderFlipMode()}
+        <div className={ss.pip}>
+          {value}
+        </div>
       </div>
     );
   }
