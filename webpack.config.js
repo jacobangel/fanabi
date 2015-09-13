@@ -35,6 +35,7 @@ module.exports = {
   module: {
     loaders: [
      { test: /\.jsx?$/, loaders: ['babel-loader'], exclude: /node_modules/ },
+     { test: /\.less?$/, loaders: ['style-loader', 'css-loader', 'less-loader'], exclude: /node_modules/ },
     ],
   },
   output: {
@@ -50,6 +51,7 @@ module.exports = {
   },
   plugins: plugins,
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: ["shared", "node_modules"]
   }
 };

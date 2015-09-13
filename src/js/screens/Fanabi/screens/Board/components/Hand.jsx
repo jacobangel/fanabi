@@ -1,6 +1,8 @@
 const React = require('react/addons');
 const cn = require('classnames');
 
+const Card = require('./Card');
+
 const SUITS = require('constants/suits')
 const ORIENTATIONS = require('constants/orientations');
 
@@ -9,11 +11,9 @@ const ORIENTATIONS = require('constants/orientations');
  * and a color. Perhaps should be decomposed into three values, a card, and then
  * faceUpCard and faceDownCard to avoid leaking information.
  */
-const Card = React.createClass({
+const Hand = React.createClass({
   propTypes: {
-    suit: React.propTypes.oneOf(Object.keys(SUITS)),
-    value: React.propTypes.number,
-    orientation: React.propTypes.oneOf(Object.keys(ORIENTATIONS)),
+    cardList: React.propTypes.array, // make a shape instead.
     isFaceDown: React.propTypes.bool,
     onClick: React.propTypes.func
   },
@@ -25,16 +25,24 @@ const Card = React.createClass({
     };
   },
 
+  renderCard(card) {
+    if (this.props.isFaceDown) {
+      return <Card isFaceDown={true} />
+    } else {
+      return <Card {...card} />
+    }
+  }
+
   render() {
-    const { orientation, suit, value, isFaceDown } = this.props;
+    const { isFaceDown, cardList } = this.props;
     let classList = isFaceDown? 'isFaceDown' : [orientation, value, suit];
     return (
-      <div className={cn('card', classList)}
+      <div className={cn('hand', classList)}
         onClick={this.props.handleClick}
         >
-        {value}
+        {cardList.map(card => this.renderCard)}
       </div>
     );
   }
 });
-module.exports = Card;
+module.exports = Hand;
