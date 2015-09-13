@@ -35,6 +35,20 @@ const getRandomPlayer = () => {
   }
 }
 
+const getRandomGame = () => {
+  const playerList = [
+    DummyData.getRandomPlayer(),
+    DummyData.getRandomPlayer(),
+    DummyData.getRandomPlayer(),
+    DummyData.getRandomPlayer(),
+  ];
+  return {
+    id: guid(),
+    players: playerList,
+    activePlayerId: playerList[Math.floor(Math.random()*playerList.length)].id,
+  }
+};
+
 module.exports = {
   getRandomHand,
   getRandomCard,
