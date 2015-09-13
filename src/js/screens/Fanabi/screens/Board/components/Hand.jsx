@@ -1,6 +1,7 @@
 const React = require('react/addons');
 const cn = require('classnames');
 
+const ss = require('./Hand.less');
 const Card = require('./Card');
 
 const SUITS = require('constants/suits')
@@ -13,9 +14,9 @@ const ORIENTATIONS = require('constants/orientations');
  */
 const Hand = React.createClass({
   propTypes: {
-    cardList: React.propTypes.array, // make a shape instead.
-    isFaceDown: React.propTypes.bool,
-    onClick: React.propTypes.func
+    cardList: React.PropTypes.array, // make a shape instead.
+    isFaceDown: React.PropTypes.bool,
+    onClick: React.PropTypes.func
   },
 
   getDefaultProps() {
@@ -31,16 +32,16 @@ const Hand = React.createClass({
     } else {
       return <Card {...card} />
     }
-  }
+  },
 
   render() {
     const { isFaceDown, cardList } = this.props;
-    let classList = isFaceDown? 'isFaceDown' : [orientation, value, suit];
+    let classList = isFaceDown? 'isFaceDown' : '';
     return (
-      <div className={cn('hand', classList)}
+      <div className={cn('hand', ss.container, classList)}
         onClick={this.props.handleClick}
         >
-        {cardList.map(card => this.renderCard)}
+        {cardList.map(this.renderCard)}
       </div>
     );
   }

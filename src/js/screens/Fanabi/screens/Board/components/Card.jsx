@@ -1,5 +1,6 @@
 const React = require('react/addons');
 const cn = require('classnames');
+const ss = require('./Card.less');
 
 const SUITS = require('constants/suits')
 const ORIENTATIONS = require('constants/orientations');
@@ -11,11 +12,11 @@ const ORIENTATIONS = require('constants/orientations');
  */
 const Card = React.createClass({
   propTypes: {
-    suit: React.propTypes.oneOf(Object.keys(SUITS)),
-    value: React.propTypes.number,
-    orientation: React.propTypes.oneOf(Object.keys(ORIENTATIONS)),
-    isFaceDown: React.propTypes.bool,
-    onClick: React.propTypes.func
+    suit: React.PropTypes.oneOf(Object.keys(SUITS)),
+    value: React.PropTypes.number,
+    orientation: React.PropTypes.oneOf(Object.keys(ORIENTATIONS)),
+    isFaceDown: React.PropTypes.bool,
+    onClick: React.PropTypes.func
   },
 
   getDefaultProps() {
@@ -27,9 +28,9 @@ const Card = React.createClass({
 
   render() {
     const { orientation, suit, value, isFaceDown } = this.props;
-    let classList = isFaceDown? 'isFaceDown' : [orientation, value, suit];
+    let classList = isFaceDown? 'isFaceDown' : [orientation.toLowerCase(), value, suit.toLowerCase()];
     return (
-      <div className={cn('card', classList)}
+      <div className={cn('card', ss.container, classList)}
         onClick={this.props.handleClick}
         >
         {value}

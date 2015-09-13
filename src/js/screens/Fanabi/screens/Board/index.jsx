@@ -1,10 +1,12 @@
 const React = require('react/addons');
 
+const Hand = require('./components/Hand');
+
 const Board = React.createClass({
   render() {
     return (
       <div>
-        <h1>Hello React</h1>
+        <Hand isFaceDown={false} cardList={this.props.handList[0]} />
       </div>
     );
   }
