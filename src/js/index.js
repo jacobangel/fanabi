@@ -9,11 +9,23 @@ const Router = ReactRouter.Router
 const Route = ReactRouter.Route
 const Link = ReactRouter.Link
 
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import createStore from './shared/store/createStore';
+
+import { Provider } from 'react-redux';
+
+const history = createBrowserHistory();
+const store = createStore();
+
 React.render((
-  <Router>
-    <Route path="/" component={App}>
-      <Route path="board" component={Board}/>
-      <Route path="lobby" component={Lobby}/>
-    </Route>
-  </Router>
+  <Provider store={store}>
+  {()=>
+    <Router history={history}>
+      <Route path="/" component={App}>
+        <Route path="board" component={Board}/>
+        <Route path="lobby" component={Lobby}/>
+      </Route>
+    </Router>
+  }
+  </Provider>
 ), mountNode);
