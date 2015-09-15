@@ -1,6 +1,8 @@
 const React = require('react/addons');
 const Player = require('./components/Player');
 const DummyData = require('utils/DummyData');
+const Deck = require('utils/Deck');
+
 const Board = React.createClass({
   getDefaultProps() {
     const playerList = [
@@ -9,7 +11,13 @@ const Board = React.createClass({
       DummyData.getRandomPlayer(),
       DummyData.getRandomPlayer(),
     ];
+    const newDeck = new Deck();
+    newDeck.shuffle();
+
     return {
+      deck: newDeck,
+      graveyard: [],
+      battlefield: [],
       activePlayerId: playerList[Math.floor(Math.random()*playerList.length)].id,
       playerList
     };

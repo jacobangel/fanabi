@@ -10,12 +10,12 @@ const Route = ReactRouter.Route
 const Link = ReactRouter.Link
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-import createStore from './shared/store/createStore';
+import createStoreInstance from './shared/store/createStore';
 
 import { Provider } from 'react-redux';
 
 const history = createBrowserHistory();
-const store = createStore();
+const store = createStoreInstance();
 
 React.render((
   <Provider store={store}>
