@@ -1,8 +1,11 @@
 const React = require('react/addons');
+import { connect } from 'react-redux';
+import { addGame, joinGame } from 'actions';
 
 const Lobby = React.createClass({
   propTypes: {
-
+    awaitingGames: React.PropTypes.array,
+    currentUser: React.PropTypes.object,
   },
   getDefaultProps() {
     return {
@@ -11,10 +14,15 @@ const Lobby = React.createClass({
   },
   handleJoinGame(id) {
     console.log('trying to join', id);
+    const { dispatch } = this.props;
+    dispatch(joinGame(this.props.currentUserId, id));
   },
 
   handleNewGame() {
     console.log('attempt to start new game');
+    const { dispatch } = this.props;
+    dispatch(addGame(this.props.currentUserId));
+    // then go to the game.
   },
 
   renderWaitingGames() {
@@ -22,8 +30,7 @@ const Lobby = React.createClass({
     return awaitingGames.map((game, i) => {
       return (
         <div>
-          <button onClick={this.handleJoinGame.bind(this, game.id)}>Join Game {i}</button>
-
+          <button onClick={this.handleJoinGame.bind(this, game.gameId)}>Join Game {i}</button>
         </div>
       );
     })
@@ -34,7 +41,7 @@ const Lobby = React.createClass({
       <div>
         <h1>Lobby</h1>
         <div>
-          <button onClick={this.handleJoinGame}>Start New Game</button>
+          <button onClick={this.handleNewGame}>Start New Game</button>
         </div>
         <div>
           <h2>Join Game</h2>
@@ -46,4 +53,12 @@ const Lobby = React.createClass({
     );
   }
 });
-module.exports = Lobby;
+module.exports = connect(
+  (state) => {
+    console.log(state);
+    return {
+      awaitingGames: state.gameReducer,
+      currentUserId: state.userReducer.cid,
+    }
+  }
+)(Lobby);

@@ -1,4 +1,5 @@
 const suits = require('constants/suits');
+import guid from './guid';
 
 const getRandomCard = () => {
   const suitsList = Object.keys(suits);
@@ -21,11 +22,6 @@ const getRandomHand = (n=5) => {
 const names = [
     'Jason', 'Canberra', 'Huley', 'Peridot', 'Jermaine', 'Hammon', 'Archer'
 ];
-const s4 = () => Math.floor((1 + Math.random()) * 0x10000) .toString(16) .substring(1);
-const guid = () => {
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-};
 
 const getRandomPlayer = () => {
   return {

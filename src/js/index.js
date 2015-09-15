@@ -15,7 +15,9 @@ import createStoreInstance from './shared/store/createStore';
 import { Provider } from 'react-redux';
 
 const history = createHashHistory();
-const store = createStoreInstance();
+const store = createStoreInstance({
+  userReducer: { cid: 1 }
+});
 
 React.render((
   <Provider store={store}>
