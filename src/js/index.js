@@ -9,12 +9,12 @@ const Router = ReactRouter.Router
 const Route = ReactRouter.Route
 const Link = ReactRouter.Link
 
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import createHashHistory from 'history/lib/createHashHistory';
 import createStoreInstance from './shared/store/createStore';
 
 import { Provider } from 'react-redux';
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 const store = createStoreInstance();
 
 React.render((
